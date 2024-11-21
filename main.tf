@@ -1,9 +1,10 @@
 data "aws_vpc" "default" {
   default = true
 }
+
 module "web_sg" {
-  source = "./module/my_security_group"
-  default = {
+  source = "./modules/my_security_group"
+  security_group_info = {
     name        = "web"
     description = "this is web security group"
     vpc_id      = data.aws_vpc.default.id
